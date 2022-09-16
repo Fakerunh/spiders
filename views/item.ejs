@@ -1,0 +1,42 @@
+<%- include('particles/header.ejs') %>
+
+<%- include('particles/navigation.ejs') %>
+
+<div class="section">
+    <h2 class="section__title">
+        <%= item.title %>
+    </h2>
+    <img class="section__image" src="/img/<%= item.image %>">
+    <h3 class="section__description">
+        <%= item.description %>
+    </h3>
+</div>
+
+<% if (auth) { %>
+<form action="/update" method="post">
+    <div class="form-group">
+        <label class="form-group__label" for="title">title</label>
+        <input value="<%= item.title %>" class="form-group__input" type="text" id="title" name="title"
+            placeholder="title">
+    </div>
+
+    <div class="form-group">
+        <label class="form-group__label" for="image">image</label>
+        <input value="<%= item.image %>" class="form-group__input" type="text" id="image" name="image"
+            placeholder="image">
+    </div>
+
+    <div class="form-group">
+        <label class="form-group__label" for="description">description</label>
+        <input value="<%= item.description %>" class="form-group__input" type="text" id="description" name="description"
+            placeholder="description">
+    </div>
+
+        <input value="<%= item.id %>" class="form-group__input" type="hidden" id="id" name="id"
+            placeholder="id">
+
+    <input class="form-button" type="submit" value="Обновить">
+</form>
+<% } %>
+
+<%- include('particles/footer.ejs') %>
